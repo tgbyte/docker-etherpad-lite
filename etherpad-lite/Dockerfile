@@ -1,4 +1,4 @@
-FROM node:9
+FROM node:10
 MAINTAINER Tony Motakis <tvelocity@gmail.com>
 
 ENV ETHERPAD_VERSION 1.6.5

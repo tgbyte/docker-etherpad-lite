@@ -47,12 +47,12 @@ if [ "$ETHERPAD_DB_TYPE" == 'mysql' ]; then
 fi
 if [ "$ETHERPAD_DB_TYPE" == 'postgres' ]; then
 	export PGPASSWORD=${ETHERPAD_DB_PASSWORD}
-	if psql -U ${ETHERPAD_DB_USER} -h ${ETHERPAD_DB_HOST} postgres -lqt | cut -d \| -f 1 | grep -qw ${ETHERPAD_DB_NAME}; then
+	if psql -U ${ETHERPAD_DB_USER} -h ${ETHERPAD_DB_HOST} -p ${ETHERPAD_DB_PORT} postgres -lqt | cut -d \| -f 1 | grep -qw ${ETHERPAD_DB_NAME}; then
 		true
 	else
 		# postgresql database does not exist, create it
 		echo "Creating database ${ETHERPAD_DB_NAME}"
-		psql -U ${ETHERPAD_DB_USER} -h ${ETHERPAD_DB_HOST} postgres \
+		psql -U ${ETHERPAD_DB_USER} -h ${ETHERPAD_DB_HOST} -p ${ETHERPAD_DB_PORT} postgres \
 			-c "create database ${ETHERPAD_DB_NAME}"
 	fi
 fi

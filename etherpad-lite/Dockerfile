@@ -1,7 +1,7 @@
 FROM node:10
 MAINTAINER Tony Motakis <tvelocity@gmail.com>
 
-ENV ETHERPAD_VERSION 1.6.6
+ENV ETHERPAD_VERSION develop
 ENV NODE_ENV production
 
 RUN apt-get update && \
@@ -12,7 +12,7 @@ RUN apt-get update && \
 WORKDIR /opt/
 
 RUN curl -SL \
-    https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
+    https://github.com/tgbyte/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
     > etherpad.zip && unzip etherpad && rm etherpad.zip && \
     mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite
 
